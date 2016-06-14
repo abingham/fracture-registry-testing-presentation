@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Title of Presentation</title>
+<meta name="author" content="(Author Q. McNamerson)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+<link rel="stylesheet" href="./reveal.js/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href="./presentation.css"/>
+<link rel="stylesheet" href="./reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1>Title of Presentation</h1>
+<h2>Author Q. McNamerson</h2>
+<h2><a href="mailto:author@domain.tld">author@domain.tld</a></h2>
+<h2>12-12-2012</h2>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgheadline1">Title of slide</a></li>
+<li><a href="#/slide-orgheadline2">Slide with code</a></li>
+<li><a href="#/slide-orgheadline6">A slide with subslides</a></li>
+<li><a href="#/slide-orgheadline7">A slide with an image</a></li>
+<li><a href="#/slide-orgheadline8">A slide with a table</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-orgheadline1">
+<h2 id="orgheadline1">Title of slide</h2>
+<p>
+Text
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline2">
+<h2 id="orgheadline2">Slide with code</h2>
+<p>
+Here is a code sample
+</p>
+
+
+<div class="org-src-container">
+
+<pre><code class="javascript">var mod = angular.module('llamas');
+mod.factory( . . . );
+</code></pre>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline6">
+<h2 id="orgheadline6">A slide with subslides</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+</div></section>
+</section>
+<section>
+<section id="slide-orgheadline3">
+<h3 id="orgheadline3">Bullet 1</h3>
+<p>
+Useful info
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline4">
+<h3 id="orgheadline4">Bullet 2</h3>
+<p>
+More useful info
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline5">
+<h3 id="orgheadline5">Etc.</h3>
+<p>
+Such useful information that you'll question your need to ever learn anything else ever again
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline7">
+<h2 id="orgheadline7">A slide with an image</h2>
+
+<div class="figure">
+<p><img src="./images/myimage.png" alt="myimage.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="./images/myimage.png" alt="myimage.png" height="200%," width="200%" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline8">
+<h2 id="orgheadline8">A slide with a table</h2>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" width="100%">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">column<sub>title1</sub></th>
+<th scope="col" class="org-left">column<sub>title2</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">b</td>
+</tr>
+
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">b</td>
+</tr>
+
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">b</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+And you can style the table like this:
+</p>
+
+<div class="org-src-container">
+
+<pre><code class="css">.reveal table th, .reveal table td {
+    text-align: center;
+    border: 1px solid white;
+}
+</code></pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 800,
+margin: 0.20,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>
