@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Title of Presentation</title>
-<meta name="author" content="(Author Q. McNamerson)"/>
+<title>Automated Testing in the Fracture Registry</title>
+<meta name="author" content="(Austin Bingham)"/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -26,37 +26,374 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1>Title of Presentation</h1>
-<h2>Author Q. McNamerson</h2>
-<h2><a href="mailto:author@domain.tld">author@domain.tld</a></h2>
-<h2>12-12-2012</h2>
+<h1>Automated Testing in the Fracture Registry</h1>
+<h2>Austin Bingham</h2>
+<h2><a href="mailto:austin@sixty-north.com">austin@sixty-north.com</a></h2>
+<h2>22.06.2016</h2>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgheadline1">Title of slide</a></li>
-<li><a href="#/slide-orgheadline2">Slide with code</a></li>
-<li><a href="#/slide-orgheadline6">A slide with subslides</a></li>
-<li><a href="#/slide-orgheadline7">A slide with an image</a></li>
-<li><a href="#/slide-orgheadline8">A slide with a table</a></li>
+<li><a href="#/slide-orgheadline2">What is automated testing?</a></li>
+<li><a href="#/slide-orgheadline8">How are we using it?</a></li>
+<li><a href="#/slide-orgheadline9">Technical overview of fracture registry</a></li>
+<li><a href="#/slide-orgheadline10">Unit testing of front-end components</a></li>
+<li><a href="#/slide-orgheadline15">Jasmine</a></li>
+<li><a href="#/slide-orgheadline19">Karma</a></li>
+<li><a href="#/slide-orgheadline20">NOTES</a></li>
+<li><a href="#/slide-orgheadline21">What?</a></li>
+<li><a href="#/slide-orgheadline22">Why?</a></li>
+<li><a href="#/slide-orgheadline23">Protractor</a></li>
+<li><a href="#/slide-orgheadline24">Cucumber</a></li>
+<li><a href="#/slide-orgheadline25">Karma</a></li>
+<li><a href="#/slide-orgheadline26">Chai</a></li>
+<li><a href="#/slide-orgheadline27">Results</a></li>
+<li><a href="#/slide-orgheadline28">Title of slide</a></li>
+<li><a href="#/slide-orgheadline29">Slide with code</a></li>
+<li><a href="#/slide-orgheadline33">A slide with subslides</a></li>
+<li><a href="#/slide-orgheadline34">A slide with an image</a></li>
+<li><a href="#/slide-orgheadline35">A slide with a table</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
+<section id="slide-orgheadline2">
+<h2 id="orgheadline2">What is automated testing?</h2>
+<blockquote nil>
+<p>
+&#x2026;the use of special software (separate from the software being tested) to
+control the execution of tests and the comparison of actual outcomes with
+predicted outcomes. &#x2013; Wikipedia
+</p>
+</blockquote>
+
+</section>
 <section id="slide-orgheadline1">
-<h2 id="orgheadline1">Title of slide</h2>
+<h3 id="orgheadline1">What is it used for?</h3>
+<ul>
+<li>Ensure expected behavior</li>
+<li>Detect regressions</li>
+<li>Guide development efforts (e.g. TDD)</li>
+<li><b>Save time and money</b></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline8">
+<h2 id="orgheadline8">How are we using it?</h2>
+<p>
+<b>Two main approaches</b>
+</p>
+<ul>
+<li>End-to-end testing of the registry</li>
+<li>Low-level/unit testing of "complex" details</li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline3">
+<h3 id="orgheadline3">Unit testing</h3>
+<p>
+Tests isolate and exercise details of the overall implementation.
+</p>
+
+<p>
+<i>Example:</i> Test functionality of Angular date-time editor directive.
+</p>
+
+</section>
+<section id="slide-orgheadline4">
+<h3 id="orgheadline4">End-to-end (E2E) testing</h3>
+<p>
+Tests execute the site just like a user and verify that it responds as expected.
+</p>
+
+<p>
+<i>Example:</i> Test that users have to assign Gustil-Anderson rating to all fractures.
+</p>
+
+</section>
+<section id="slide-orgheadline5">
+<h3 id="orgheadline5">Use-case driven tests (behavior-driven design)</h3>
+<p>
+E2E tests are intended to capture important stories or use-cases in the registry.
+</p>
+
+<p>
+Written in "natural language" using <a href="https://cucumber.io/">Cucumber</a>.
+</p>
+
+</section>
+<section id="slide-orgheadline6">
+<h3 id="orgheadline6">Pragmatic, not dogmatic!</h3>
+<p>
+Coverage is not (even close to) 100%.
+</p>
+
+<p>
+Testing primarily supports development effort right now, <i>and especially change
+management</i>.
+</p>
+
+<p>
+Tests are created when and if we feel they're worth the effort. This is by
+definition based on judgement.
+</p>
+
+</section>
+<section id="slide-orgheadline7">
+<h3 id="orgheadline7">Leveraged</h3>
+<p>
+We don't test the backend at all because we rely on MRS's tests.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline9">
+<h2 id="orgheadline9">Technical overview of fracture registry</h2>
+<ul>
+<li>Research-oriented registry of bone fractures and treatments</li>
+<li>Based on MRS</li>
+<li>MVC</li>
+<li>Entity Framework</li>
+<li>Razor</li>
+<li>Angular</li>
+<li>Bootstrap</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline10">
+<h2 id="orgheadline10">Unit testing of front-end components</h2>
+<ul>
+<li><a href="http://jasmine.github.io/">Jasmine</a>: BDD-style JavaScript testing library</li>
+<li><a href="https://karma-runner.github.io/">Karma</a>: JavaScript test runner</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline15">
+<h2 id="orgheadline15">Jasmine</h2>
+<p>
+Jasmine attempts to align natural language descriptions of tests with JavaScript that defines the test.
+</p>
+
+<p>
+It provides functionality for:
+</p>
+<ul>
+<li>Structuring and organizing tests</li>
+<li>Defining fixtures</li>
+<li>Expressing assertions</li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline14">
+<h3 id="orgheadline14">Jasmine example</h3>
+<div class="outline-text-3" id="text-orgheadline14">
+</div></section>
+<section id="slide-orgheadline11">
+<h4 id="orgheadline11">Top-level configuration</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">// Sources/Client.Web.UI.tests/unittests/DateTimeEditor-tests.js
+
+describe('DateTimeEditor directive', function() {
+    var $compile, $scope;
+
+    beforeEach(module('DateTimeEditor'));
+
+. . .
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline12">
+<h4 id="orgheadline12">Set up environment before each test</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">beforeEach(inject(
+    ['$compile', '$rootScope', function($c, $rootScope) {
+     $compile = $c;
+     $scope = $rootScope.$new();
+     $scope.date = new Date(1975, 0, 19, 17, 12, 34, 5);
+     $scope.disabled = function() { return false; }
+
+     var html = '<date-time-editor model="date" disabled="disabled()"></date-time-editor>';
+     $scope.element = $compile(html)($scope);
+     $scope.$digest();
+    }]
+));
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline13">
+<h4 id="orgheadline13">An individual test</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">it('sets the fields to empty on null dates', function() {
+    var dateInput = $scope.element.find('[name=date-input]');
+    var timeInput = $scope.element.find('[name=time-input]');
+
+    $scope.date = null;
+    $scope.$digest();
+    expect(dateInput.val()).toEqual("");
+    expect(timeInput.val()).toEqual("");
+});
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline19">
+<h2 id="orgheadline19">Karma</h2>
+<p>
+Created by AngularJS team to meet their testing needs.
+</p>
+
+<p>
+You specify:
+</p>
+<ul>
+<li>test code</li>
+<li>code under test</li>
+<li>testing framework (e.g. Jasmine).</li>
+
+</ul>
+
+<p>
+Executes tests <i>in a browser</i>.
+</p>
+
+</section>
+<section id="slide-orgheadline18">
+<h3 id="orgheadline18">Karma example</h3>
+<div class="outline-text-3" id="text-orgheadline18">
+</div></section>
+<section id="slide-orgheadline16">
+<h4 id="orgheadline16">Karma configuration file</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">// Source/Client.Web.UI.tests/karma.conf.js
+module.exports = function(config) {
+    config.set({
+        basePath: '..',
+        frameworks: ['jasmine'],
+        browsers: ['Chrome'],
+        browserNoActivityTimeout: 1000000000,
+        files: [
+            // Core libraries
+            'Client.Web.UI/Core/Scripts/Bootstrap/bootstrap.js',
+            'Client.Web.UI/Scripts/angular.min.js',
+            . . .
+
+            // Testing infrastructure stuff
+            'Client.Web.UI/Scripts/angular-mocks.js',
+
+            // CODE UNDER TEST: date-time-editor
+            'Client.Web.UI/LocalScripts/Directives/DateTimeEditor-directive.js',
+
+            // the tests themselves
+            'Client.Web.UI.tests/unittests/*.js'
+        ]
+    });
+};
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline17">
+<h4 id="orgheadline17">Executing karma</h4>
+<div class="org-src-container">
+
+<pre><code class="bash">$ karma start karma.conf.js
+. . .
+15 06 2016 15:28:13.894:INFO [launcher]: Starting browser Chrome
+15 06 2016 15:28:16.194:INFO [Chrome 50.0.2661 (Windows 8.1 0.0.0)]: Connected on socket /#_sXVry5a4SdsatTxAAAA with id 25571381
+Chrome 50.0.2661 (Windows 8.1 0.0.0): Executed 27 of 27 SUCCESS (0.399 secs / 0.358 secs)
+</code></pre>
+</div>
+
+<p>
+This launches chrome and runs the tests therein.
+</p>
+
+<p>
+It also monitors files for changes, re-executing tests as needed.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline20">
+<h2 id="orgheadline20">NOTES</h2>
+<p>
+<a href="https://docs.angularjs.org/guide/unit-testing">https://docs.angularjs.org/guide/unit-testing</a>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline21">
+<h2 id="orgheadline21">What?</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline22">
+<h2 id="orgheadline22">Why?</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline23">
+<h2 id="orgheadline23">Protractor</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline24">
+<h2 id="orgheadline24">Cucumber</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline25">
+<h2 id="orgheadline25">Karma</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline26">
+<h2 id="orgheadline26">Chai</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline27">
+<h2 id="orgheadline27">Results</h2>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline28">
+<h2 id="orgheadline28">Title of slide</h2>
 <p>
 Text
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline2">
-<h2 id="orgheadline2">Slide with code</h2>
+<section id="slide-orgheadline29">
+<h2 id="orgheadline29">Slide with code</h2>
 <p>
 Here is a code sample
 </p>
@@ -73,33 +410,27 @@ mod.factory( . . . );
 </section>
 </section>
 <section>
-<section id="slide-orgheadline6">
-<h2 id="orgheadline6">A slide with subslides</h2>
-<div class="outline-text-2" id="text-orgheadline6">
+<section id="slide-orgheadline33">
+<h2 id="orgheadline33">A slide with subslides</h2>
+<div class="outline-text-2" id="text-orgheadline33">
 </div></section>
-</section>
-<section>
-<section id="slide-orgheadline3">
-<h3 id="orgheadline3">Bullet 1</h3>
+<section id="slide-orgheadline30">
+<h3 id="orgheadline30">Bullet 1</h3>
 <p>
 Useful info
 </p>
 
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline4">
-<h3 id="orgheadline4">Bullet 2</h3>
+<section id="slide-orgheadline31">
+<h3 id="orgheadline31">Bullet 2</h3>
 <p>
 More useful info
 </p>
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline5">
-<h3 id="orgheadline5">Etc.</h3>
+<section id="slide-orgheadline32">
+<h3 id="orgheadline32">Etc.</h3>
 <p>
 Such useful information that you'll question your need to ever learn anything else ever again
 </p>
@@ -107,8 +438,8 @@ Such useful information that you'll question your need to ever learn anything el
 </section>
 </section>
 <section>
-<section id="slide-orgheadline7">
-<h2 id="orgheadline7">A slide with an image</h2>
+<section id="slide-orgheadline34">
+<h2 id="orgheadline34">A slide with an image</h2>
 
 <div class="figure">
 <p><img src="./images/myimage.png" alt="myimage.png" />
@@ -124,8 +455,8 @@ Such useful information that you'll question your need to ever learn anything el
 </section>
 </section>
 <section>
-<section id="slide-orgheadline8">
-<h2 id="orgheadline8">A slide with a table</h2>
+<section id="slide-orgheadline35">
+<h2 id="orgheadline35">A slide with a table</h2>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" width="100%">
 
 
@@ -197,7 +528,7 @@ minScale: 0.50,
 maxScale: 2.50,
 
 theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
 transitionSpeed: 'default',
 multiplex: {
     secret: '', // null if client

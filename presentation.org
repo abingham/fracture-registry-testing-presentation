@@ -5,9 +5,9 @@
 #+REVEAL_MARGIN: 0.2
 #+REVEAL_MIN_SCALE: 0.5
 #+REVEAL_MAX_SCALE: 2.5
-#+REVEAL_TRANS: none
+#+REVEAL_TRANS: slide
 #+REVEAL_THEME: solarized
-#+REVEAL_HLEVEL: 999
+#+REVEAL_HLEVEL: 1
 #+REVEAL_EXTRA_CSS: ./presentation.css
 #+REVEAL_PLUGINS: (highlight)
 
@@ -15,6 +15,185 @@
 #+AUTHOR: Austin Bingham
 #+EMAIL: austin@sixty-north.com
 #+DATE: 22.06.2016
+
+* What is automated testing?
+#+BEGIN_QUOTE
+...the use of special software (separate from the software being tested) to
+control the execution of tests and the comparison of actual outcomes with
+predicted outcomes. -- Wikipedia
+#+END_QUOTE
+
+** What is it used for?
+- Ensure expected behavior
+- Detect regressions
+- Guide development efforts (e.g. TDD)
+- *Save time and money*
+
+* How are we using it?
+*Two main approaches*
+- End-to-end testing of the registry
+- Low-level/unit testing of "complex" details
+
+** Unit testing
+
+Tests isolate and exercise details of the overall implementation.
+
+/Example:/ Test functionality of Angular date-time editor directive.
+
+** End-to-end (E2E) testing
+
+Tests execute the site just like a user and verify that it responds as expected.
+
+/Example:/ Test that users have to assign Gustil-Anderson rating to all fractures.
+
+** Use-case driven tests (behavior-driven design)
+
+E2E tests are intended to capture important stories or use-cases in the registry.
+
+Written in "natural language" using [[https://cucumber.io/][Cucumber]].
+
+** Pragmatic, not dogmatic!
+
+Coverage is not (even close to) 100%.
+
+Testing primarily supports development effort right now, /and especially change
+management/.
+
+Tests are created when and if we feel they're worth the effort. This is by
+definition based on judgement.
+
+** Leveraged
+
+We don't test the backend at all because we rely on MRS's tests.
+
+* Technical overview of fracture registry
+
+- Research-oriented registry of bone fractures and treatments
+- Based on MRS
+- MVC
+- Entity Framework
+- Razor
+- Angular
+- Bootstrap
+
+* Unit testing of front-end components
+- [[http://jasmine.github.io/][Jasmine]]: BDD-style JavaScript testing library
+- [[https://karma-runner.github.io/][Karma]]: JavaScript test runner
+
+* Jasmine
+Jasmine attempts to align natural language descriptions of tests with JavaScript that defines the test.
+
+It provides functionality for:
+- Structuring and organizing tests
+- Defining fixtures
+- Expressing assertions
+
+** Jasmine example
+*** Top-level configuration
+
+#+BEGIN_SRC javascript
+// Sources/Client.Web.UI.tests/unittests/DateTimeEditor-tests.js
+
+describe('DateTimeEditor directive', function() {
+    var $compile, $scope;
+
+    beforeEach(module('DateTimeEditor'));
+
+. . .
+
+#+END_SRC
+
+*** Set up environment before each test
+
+
+#+BEGIN_SRC javascript
+beforeEach(inject(
+    ['$compile', '$rootScope', function($c, $rootScope) {
+     $compile = $c;
+     $scope = $rootScope.$new();
+     $scope.date = new Date(1975, 0, 19, 17, 12, 34, 5);
+     $scope.disabled = function() { return false; }
+
+     var html = '<date-time-editor model="date" disabled="disabled()"></date-time-editor>';
+     $scope.element = $compile(html)($scope);
+     $scope.$digest();
+    }]
+));
+#+END_SRC
+
+*** An individual test
+
+
+#+BEGIN_SRC javascript
+it('sets the fields to empty on null dates', function() {
+    var dateInput = $scope.element.find('[name=date-input]');
+    var timeInput = $scope.element.find('[name=time-input]');
+
+    $scope.date = null;
+    $scope.$digest();
+    expect(dateInput.val()).toEqual("");
+    expect(timeInput.val()).toEqual("");
+});
+#+END_SRC
+
+* Karma
+
+Created by AngularJS team to meet their testing needs.
+
+You specify:
+- test code
+- code under test
+- testing framework (e.g. Jasmine).
+
+Executes tests /in a browser/.
+
+** Karma example
+*** Karma configuration file
+
+#+BEGIN_SRC javascript
+// Source/Client.Web.UI.tests/karma.conf.js
+module.exports = function(config) {
+    config.set({
+        basePath: '..',
+        frameworks: ['jasmine'],
+        browsers: ['Chrome'],
+        browserNoActivityTimeout: 1000000000,
+        files: [
+            // Core libraries
+            'Client.Web.UI/Core/Scripts/Bootstrap/bootstrap.js',
+            'Client.Web.UI/Scripts/angular.min.js',
+            . . .
+
+            // Testing infrastructure stuff
+            'Client.Web.UI/Scripts/angular-mocks.js',
+
+            // CODE UNDER TEST: date-time-editor
+            'Client.Web.UI/LocalScripts/Directives/DateTimeEditor-directive.js',
+
+            // the tests themselves
+            'Client.Web.UI.tests/unittests/*.js'
+        ]
+    });
+};
+
+#+END_SRC
+
+*** Executing karma
+
+
+#+BEGIN_SRC bash
+$ karma start karma.conf.js
+. . .
+15 06 2016 15:28:13.894:INFO [launcher]: Starting browser Chrome
+15 06 2016 15:28:16.194:INFO [Chrome 50.0.2661 (Windows 8.1 0.0.0)]: Connected on socket /#_sXVry5a4SdsatTxAAAA with id 25571381
+Chrome 50.0.2661 (Windows 8.1 0.0.0): Executed 27 of 27 SUCCESS (0.399 secs / 0.358 secs)
+#+END_SRC
+
+This launches chrome and runs the tests therein.
+
+It also monitors files for changes, re-executing tests as needed.
+* NOTES
+https://docs.angularjs.org/guide/unit-testing
 
 * What?
 * Why?
