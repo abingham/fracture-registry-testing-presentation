@@ -442,15 +442,17 @@ useful in future maintenance.*
 
 * References
 
-*Technology*
-- Karma:   [[https://karma-runner.github.io][karma-runner.github.io]]
-- Jasmine: [[https://jasmine.github.io][jasmine.github.io]]
-- Selenium:  [[https://www.seleniumhq.org][seleniumhq.org]]
-- Protractor: [[https://www.protractortest.org/][protractortest.org]]
-- PhantomJS: [[https://phantomjs.org/][phantomjs.org]]
-- Cucumber: [[https://cucumber.io/][cucumber.io]]
+#+ATTR_HTML: :width 100%
 
-*Other interesting links*
-- Unit testing for Angular: [[https://docs.angularjs.org/guide/unit-testing][docs.angularjs.org/guide/unit-testing]]
-- The important of testability: [[https://speakerdeck.com/abingham/the-primacy-of-testability][speakerdeck.com/abingham/the-primacy-of-testability]]
-- This presentation: [[https://github.com/abingham/fracture-registry-testing-presentation][github.com/abingham/fracture-registry-testing-presentation]]
+| *Technology*                  |                                                            |
+|-------------------------------+------------------------------------------------------------|
+| Karma                         | [[https://karma-runner.github.io][karma-runner.github.io]]                                     |
+| Jasmine                       | [[https://jasmine.github.io][jasmine.github.io]]                                          |
+| Selenium                      | [[https://www.seleniumhq.org][seleniumhq.org]]                                             |
+| Protractor                    | [[https://www.protractortest.org/][protractortest.org]]                                         |
+| PhantomJS                     | [[https://phantomjs.org/][phantomjs.org]]                                              |
+| Cucumber                      | [[https://cucumber.io/][cucumber.io]]                                                |
+| *Misc*                        |                                                               |
+| Unit testing for Angular      | [[https://docs.angularjs.org/guide/unit-testing][docs.angularjs.org/guide/unit-testing]]                      |
+| The importance of testability | [[https://speakerdeck.com/abingham/the-primacy-of-testability][speakerdeck.com/abingham/the-primacy-of-testability]]        |
+| This presentation             | [[https://github.com/abingham/fracture-registry-testing-presentation][github.com/abingham/fracture-registry-testing-presentation]] |

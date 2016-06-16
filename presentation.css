@@ -31,3 +31,7 @@ body {
   text-transform: none;
   text-shadow: none;
   word-wrap: break-word; }
+
+.reveal table {
+    font-size: 30px;
+}
