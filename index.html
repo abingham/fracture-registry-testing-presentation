@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Automated Testing in the Fracture Registry</title>
+<meta name="author" content="(Austin Bingham)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+<link rel="stylesheet" href="./reveal.js/css/theme/solarized.css" id="theme"/>
+<link rel="stylesheet" href="./presentation.css"/>
+<link rel="stylesheet" href="./reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1>Automated Testing in the Fracture Registry</h1>
+<h2>Austin Bingham</h2>
+<h2><a href="mailto:austin@sixty-north.com">austin@sixty-north.com</a></h2>
+<h2>22.06.2016</h2>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgheadline2">What is automated testing?</a></li>
+<li><a href="#/slide-orgheadline8">How are we using it?</a></li>
+<li><a href="#/slide-orgheadline9">Technical overview of fracture registry</a></li>
+<li><a href="#/slide-orgheadline17">Unit testing of front-end components</a></li>
+<li><a href="#/slide-orgheadline31">End-to-end testing</a></li>
+<li><a href="#/slide-orgheadline35">Results</a></li>
+<li><a href="#/slide-orgheadline36">Future work</a></li>
+<li><a href="#/slide-orgheadline37">References</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-orgheadline2">
+<h2 id="orgheadline2">What is automated testing?</h2>
+<blockquote nil>
+<p>
+&#x2026;the use of special software (separate from the software being tested) to
+control the execution of tests and the comparison of actual outcomes with
+predicted outcomes. &#x2013; Wikipedia
+</p>
+</blockquote>
+
+</section>
+<section id="slide-orgheadline1">
+<h3 id="orgheadline1">What is it used for?</h3>
+<ul>
+<li>Ensure expected behavior</li>
+<li>Detect regressions</li>
+<li>Guide development efforts (e.g. TDD)</li>
+<li><b>Save time and money</b></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline8">
+<h2 id="orgheadline8">How are we using it?</h2>
+<p>
+<b>Two main approaches</b>
+</p>
+<ul>
+<li>End-to-end testing of the registry</li>
+<li>Low-level/unit testing of "complex" details</li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline3">
+<h3 id="orgheadline3">Unit testing</h3>
+<p>
+Tests isolate and exercise details of the overall implementation.
+</p>
+
+<p>
+<i>Example:</i> Test functionality of Angular date-time editor directive.
+</p>
+
+</section>
+<section id="slide-orgheadline4">
+<h3 id="orgheadline4">End-to-end (E2E) testing</h3>
+<p>
+Tests execute the site just like a user and verify that it responds as expected.
+</p>
+
+<p>
+<i>Example:</i> Test that users have to assign Gustilo-Anderson rating to all fractures.
+</p>
+
+</section>
+<section id="slide-orgheadline5">
+<h3 id="orgheadline5">Use-case driven tests (behavior-driven design)</h3>
+<p>
+E2E tests are intended to capture important stories or use-cases in the registry.
+</p>
+
+<p>
+Written in "natural language" using <a href="https://cucumber.io/">Cucumber</a>.
+</p>
+
+</section>
+<section id="slide-orgheadline6">
+<h3 id="orgheadline6">Pragmatic, not dogmatic!</h3>
+<p>
+Coverage is not (even close to) 100%.
+</p>
+
+<p>
+Testing primarily supports development effort right now, <i>and especially change
+management</i>.
+</p>
+
+<p>
+Tests are created when and if we feel they're worth the effort. This is by
+definition based on judgement.
+</p>
+
+</section>
+<section id="slide-orgheadline7">
+<h3 id="orgheadline7">Leveraged</h3>
+<p>
+We don't test the backend at all because we rely on MRS's tests.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline9">
+<h2 id="orgheadline9">Technical overview of fracture registry</h2>
+<ul>
+<li>Research-oriented registry of bone fractures and treatments</li>
+<li>Based on MRS</li>
+<li>MVC</li>
+<li>Entity Framework</li>
+<li>Razor</li>
+<li>Angular</li>
+<li>Bootstrap</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline17">
+<h2 id="orgheadline17">Unit testing of front-end components</h2>
+<ul>
+<li><a href="http://jasmine.github.io/">Jasmine</a>: BDD-style JavaScript testing library</li>
+<li><a href="https://karma-runner.github.io/">Karma</a>: JavaScript test runner</li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline13">
+<h3 id="orgheadline13">Jasmine</h3>
+
+<div class="figure">
+<p><img src="./images/jasmine-logo.png" alt="jasmine-logo.png" height="200px" />
+</p>
+</div>
+
+<p>
+A behavior-driven development framework for JavaScript.
+</p>
+
+<p>
+It provides functionality for:
+</p>
+<ul>
+<li>Structuring and organizing tests</li>
+<li>Defining fixtures</li>
+<li>Expressing assertions</li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline10">
+<h4 id="orgheadline10">Jasmine example: Top-level configuration</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">// Sources/Client.Web.UI.tests/unittests/DateTimeEditor-tests.js
+
+describe('DateTimeEditor directive', function() {
+    var $compile, $scope;
+
+    beforeEach(module('DateTimeEditor'));
+
+. . .
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline11">
+<h4 id="orgheadline11">Jasmine example: Set up environment before each test</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">beforeEach(inject(
+    ['$compile', '$rootScope', function($c, $rootScope) {
+     $compile = $c;
+     $scope = $rootScope.$new();
+     $scope.date = new Date(1975, 0, 19, 17, 12, 34, 5);
+     $scope.disabled = function() { return false; }
+
+     var html = '<date-time-editor model="date" disabled="disabled()"></date-time-editor>';
+     $scope.element = $compile(html)($scope);
+     $scope.$digest();
+    }]
+));
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline12">
+<h4 id="orgheadline12">Jasmine example: An individual test</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">it('sets the fields to empty on null dates', function() {
+    var dateInput = $scope.element.find('[name=date-input]');
+    var timeInput = $scope.element.find('[name=time-input]');
+
+    $scope.date = null;
+    $scope.$digest();
+    expect(dateInput.val()).toEqual("");
+    expect(timeInput.val()).toEqual("");
+});
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline16">
+<h3 id="orgheadline16">Karma</h3>
+
+<div class="figure">
+<p><img src="./images/karma-logo.png" alt="karma-logo.png" height="200px" />
+</p>
+</div>
+
+<p>
+Created by AngularJS team to meet their testing needs.
+</p>
+
+<p>
+You specify:
+</p>
+<ul>
+<li>test code</li>
+<li>code under test</li>
+<li>testing framework (e.g. Jasmine).</li>
+
+</ul>
+
+<p>
+Executes tests <i>in a browser</i>.
+</p>
+
+</section>
+<section id="slide-orgheadline14">
+<h4 id="orgheadline14">Karma example: Configuration file</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">// Source/Client.Web.UI.tests/karma.conf.js
+module.exports = function(config) {
+    config.set({
+        basePath: '..',
+        frameworks: ['jasmine'],
+        browsers: ['Chrome'],
+        browserNoActivityTimeout: 1000000000,
+        files: [
+            // Core libraries
+            'Client.Web.UI/Core/Scripts/Bootstrap/bootstrap.js',
+            'Client.Web.UI/Scripts/angular.min.js',
+            . . .
+
+            // Testing infrastructure stuff
+            'Client.Web.UI/Scripts/angular-mocks.js',
+
+            // CODE UNDER TEST: date-time-editor
+            'Client.Web.UI/LocalScripts/Directives/DateTimeEditor-directive.js',
+
+            // the tests themselves
+            'Client.Web.UI.tests/unittests/*.js'
+        ]
+    });
+};
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline15">
+<h4 id="orgheadline15">Karma example: Executing karma</h4>
+<div class="org-src-container">
+
+<pre><code class="bash">$ karma start karma.conf.js
+. . .
+15 06 2016 15:28:13.894:INFO [launcher]: Starting browser Chrome
+15 06 2016 15:28:16.194:INFO [Chrome 50.0.2661 (Windows 8.1 0.0.0)]: Connected on socket /#_sXVry5a4SdsatTxAAAA with id 25571381
+Chrome 50.0.2661 (Windows 8.1 0.0.0): Executed 27 of 27 SUCCESS (0.399 secs / 0.358 secs)
+</code></pre>
+</div>
+
+<p>
+This launches chrome and runs the tests therein.
+</p>
+
+<p>
+It also monitors files for changes, re-executing tests as needed.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline31">
+<h2 id="orgheadline31">End-to-end testing</h2>
+<ul>
+<li><a href="http://www.seleniumhq.org/">Selenium WebDriver</a></li>
+<li><a href="http://www.protractortest.org/#/">Protractor</a></li>
+<li><a href="http://phantomjs.org/">PhantomJS</a></li>
+<li><a href="https://cucumber.io/">Cucumber</a></li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline18">
+<h3 id="orgheadline18">Selenium WebDriver</h3>
+
+<div class="figure">
+<p><img src="./images/selenium-logo.png" alt="selenium-logo.png" height="200px" />
+</p>
+</div>
+
+<p>
+WebDriver allows you to automate browsers.
+</p>
+
+<ol>
+<li>Start server</li>
+<li>Server launches browser and listens for commands</li>
+<li>Test runner sends commands to server</li>
+
+</ol>
+
+<div class="org-src-container">
+
+<pre><code class="bash">C:\Users\mrsdev> webdriver-manager start
+</code></pre>
+</div>
+
+<p>
+Just leave this running all the time.
+</p>
+
+</section>
+<section id="slide-orgheadline25">
+<h3 id="orgheadline25">Protractor</h3>
+
+<div class="figure">
+<p><img src="./images/protractor-logo.png" alt="protractor-logo.png" height="200px" />
+</p>
+</div>
+
+<p>
+An end-to-end- test framework for AngularJS apps.
+</p>
+
+<p>
+Takes care of many of the details associated with Angular.
+</p>
+
+</section>
+<section id="slide-orgheadline19">
+<h4 id="orgheadline19">Protractor example: Selenium and browser configuration</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">exports.config = {
+    seleniumAddress:
+    (process.env.SELENIUM_URL || 'http://localhost:4444/wd/hub'),
+
+    capabilities: {
+        'browserName':
+        (process.env.TEST_BROWSER_NAME || 'phantomjs'),
+        'version':
+        (process.env.TEST_BROWSER_VERSION || 'ANY'),
+        'phantomjs.binary.path':
+        (process.env.PHANTOMJS_BINARY_PATH || require('phantomjs-prebuilt').path)
+    },
+
+    . . .
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline20">
+<h4 id="orgheadline20">Protractor example: Parameters and preparation configuration</h4>
+<div class="org-src-container">
+
+<pre><code class="language">allScriptsTimeout: 31000,
+getPageTimeout: 30000,
+
+// This can be controlled with the '--baseUrl' arguments to protractor as well.
+baseUrl: 'https://mrsdev.helsemn.no/Frakturregister/',
+
+onPrepare: function() {
+    browser.manage().window().setSize(1600, 1000);
+    // TODO: Should we do login/patient selection here?
+},
+
+rootElement: '[ng-app]',
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline21">
+<h4 id="orgheadline21">Protractor example: Cucumber configuration</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">framework: 'custom',
+
+frameworkPath: require.resolve('protractor-cucumber-framework'),
+
+// Spec patterns are relative to this directory.
+specs: [
+    'tests/*.feature'
+],
+
+cucumberOpts: {
+    require: ['tests/config.js',
+              'tests/stepDefinitions/mrs_common_steps.js',
+              'tests/stepDefinitions/consultation_form_steps.js',
+              'tests/stepDefinitions/fracture_form_steps.js',
+              'tests/stepDefinitions/incident_form_steps.js',
+              'tests/stepDefinitions/procedure_form_steps.js'],
+    // tags: ['@dev'],
+    format: 'pretty'
+}
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline22">
+<h4 id="orgheadline22">Protractor example: Page objects</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">function EpifyseMetafyseDialog() {
+    this.dialog = element(by.name('epifyse-metafyse-dialog'));
+};
+
+EpifyseMetafyseDialog.prototype = Object.create({}, {
+    epifyseButton: { get: function() {
+        return this.dialog.element(by.buttonText('Epifyse'));
+    }},
+    metafyseButton: { get: function() {
+        return this.dialog.element(by.buttonText('Metafyse'));
+    }}
+});
+
+module.exports = EpifyseMetafyseDialog;
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline23">
+<h4 id="orgheadline23">Protractor example: Test steps</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">this.When('I select "$choice" for epifyse/metafyse', function (choice) {
+    var dialog = new EpifyseMetafyseDialog();
+    switch (choice.toLowerCase()) {
+    case 'metafyse':
+        return dialog.metafyseButton.click();
+    case 'epifyse':
+        return dialog.epifyseButton.click();
+    default:
+        throw 'epifyse-metafyse choice must be epifyse or metafyse';
+    }
+});
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline24">
+<h4 id="orgheadline24">Protractor example: Assertions</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">this.Then("AO Code is \"$code\"", function (expected, next) {
+    var page = new FracturePage();
+    page.aoCode.get().then(function (ao) {
+        expect(ao).to.equal(expected);
+        next();
+    });
+});
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline26">
+<h3 id="orgheadline26">PhantomJS</h3>
+
+<div class="figure">
+<p><img src="./images/phantomjs-logo.png" alt="phantomjs-logo.png" height="200px" />
+</p>
+</div>
+
+<p>
+A headless, WebKit-based browser.
+</p>
+
+<p>
+Good for running E2E tests in the background.
+</p>
+
+<p>
+Also good for CI using headless machines.
+</p>
+
+</section>
+<section id="slide-orgheadline30">
+<h3 id="orgheadline30">Cucumber</h3>
+
+<div class="figure">
+<p><img src="./images/cucumber-logo.png" alt="cucumber-logo.png" height="200px" />
+</p>
+</div>
+
+<p>
+"Natural language" test definitions using <a href="https://cucumber.io/docs/reference">gherkin syntax</a>.
+</p>
+
+<p>
+Allow non-programmer domain experts to write tests. In principle&#x2026;
+</p>
+
+<p>
+Tests are tied via regular expressions to executable code.
+</p>
+
+</section>
+<section id="slide-orgheadline27">
+<h4 id="orgheadline27">Cucumber example: Feature files</h4>
+<div class="org-src-container">
+
+<pre><code class="gherkin">Feature: Incident form rules
+  The incident form should enforce certain rules and constraints
+  so that it doesn't generate invalid incidents.
+
+  Background:
+    Given I create a new incident
+
+  Scenario: Showing skadested V1 suboptions
+    When I select skadested "V1"
+    Then the V1 fremkomstmiddel options are displayed
+    And the N fremkomstmiddel options are not displayed
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline28">
+<h4 id="orgheadline28">Cucumber example: Mapping gherkin to javascript</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">this.When(/^I create a new incident$/, function(next) {
+    var that = this;
+    var page = new IncidentPage();
+    page.create(this.patientGuid).then(function () {
+        return page.formId;
+    }).then(function(guid) {
+        that.incidentFormGuid = guid;
+        next();
+    });
+});
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline29">
+<h4 id="orgheadline29">Cucumber example: Passing parameters to steps</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">this.When("I select skadested \"$code\"", function(code, next) {
+    var page  = new IncidentPage();
+    page.skadested.set(code).then(function() {
+        next();
+    });
+});
+</code></pre>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline35">
+<h2 id="orgheadline35">Results</h2>
+<div class="outline-text-2" id="text-orgheadline35">
+</div></section>
+<section id="slide-orgheadline32">
+<h3 id="orgheadline32">How much effort is involved?</h3>
+<p>
+The main effort was learning the testing ecosystem.
+</p>
+
+<p>
+Writing tests <b>can</b> be time consuming.
+</p>
+
+<p>
+It has been a small fraction of overall development effort.
+</p>
+
+</section>
+<section id="slide-orgheadline33">
+<h3 id="orgheadline33">Is it worth the effort?</h3>
+<p>
+<b>YES!</b>
+</p>
+
+<p>
+These tests have paid for themselves several times over.
+</p>
+
+<p>
+I can make large changes to the registry with confidence.
+</p>
+
+</section>
+<section id="slide-orgheadline34">
+<h3 id="orgheadline34">How about the use of cucumber?</h3>
+<p>
+This was a mixed result.
+</p>
+
+<p>
+Domain experts are not involved in writing these tests as envisioned.
+</p>
+
+<p>
+The extra level of abstraction does entail extra work and maintenance.
+</p>
+
+<p>
+However, the constraints have led to well-structured, reusable tests.
+</p>
+
+<p>
+<b>On balance, I think the approach is effective. And it may prove even more
+useful in future maintenance.</b>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline36">
+<h2 id="orgheadline36">Future work</h2>
+<ul>
+<li>Integrate testing with continuous integration</li>
+<li>Find ways to speed up tests</li>
+<li>Polish and improve existing tests</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline37">
+<h2 id="orgheadline37">References</h2>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Technology</b></th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Karma</td>
+<td class="org-left"><a href="https://karma-runner.github.io/">karma-runner.github.io</a></td>
+</tr>
+
+<tr>
+<td class="org-left">Jasmine</td>
+<td class="org-left"><a href="https://jasmine.github.io/">jasmine.github.io</a></td>
+</tr>
+
+<tr>
+<td class="org-left">Selenium</td>
+<td class="org-left"><a href="https://www.seleniumhq.org/">seleniumhq.org</a></td>
+</tr>
+
+<tr>
+<td class="org-left">Protractor</td>
+<td class="org-left"><a href="https://www.protractortest.org/">protractortest.org</a></td>
+</tr>
+
+<tr>
+<td class="org-left">PhantomJS</td>
+<td class="org-left"><a href="https://phantomjs.org/">phantomjs.org</a></td>
+</tr>
+
+<tr>
+<td class="org-left">Cucumber</td>
+<td class="org-left"><a href="https://cucumber.io/">cucumber.io</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><b>Misc</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Unit testing for Angular</td>
+<td class="org-left"><a href="https://docs.angularjs.org/guide/unit-testing">docs.angularjs.org/guide/unit-testing</a></td>
+</tr>
+
+<tr>
+<td class="org-left">The importance of testability</td>
+<td class="org-left"><a href="https://speakerdeck.com/abingham/the-primacy-of-testability">speakerdeck.com/abingham/the-primacy-of-testability</a></td>
+</tr>
+
+<tr>
+<td class="org-left">This presentation</td>
+<td class="org-left"><a href="https://github.com/abingham/fracture-registry-testing-presentation">github.com/abingham/fracture-registry-testing-presentation</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 800,
+margin: 0.20,
+minScale: 0.50,
+maxScale: 2.50,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>
