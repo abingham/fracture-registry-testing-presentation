@@ -39,27 +39,11 @@
 <li><a href="#/slide-orgheadline2">What is automated testing?</a></li>
 <li><a href="#/slide-orgheadline8">How are we using it?</a></li>
 <li><a href="#/slide-orgheadline9">Technical overview of fracture registry</a></li>
-<li><a href="#/slide-orgheadline10">Unit testing of front-end components</a></li>
-<li><a href="#/slide-orgheadline15">Jasmine</a></li>
-<li><a href="#/slide-orgheadline19">Karma</a></li>
-<li><a href="#/slide-orgheadline20">End-to-end testing</a></li>
-<li><a href="#/slide-orgheadline21">Selenium WebDriver</a></li>
-<li><a href="#/slide-orgheadline29">Protractor</a></li>
-<li><a href="#/slide-orgheadline30">PhantomJS</a></li>
-<li><a href="#/slide-orgheadline35">Cucumber</a></li>
-<li><a href="#/slide-orgheadline36">NOTES</a></li>
-<li><a href="#/slide-orgheadline37">What?</a></li>
-<li><a href="#/slide-orgheadline38">Why?</a></li>
-<li><a href="#/slide-orgheadline39">Protractor</a></li>
-<li><a href="#/slide-orgheadline40">Cucumber</a></li>
-<li><a href="#/slide-orgheadline41">Karma</a></li>
-<li><a href="#/slide-orgheadline42">Chai</a></li>
-<li><a href="#/slide-orgheadline43">Results</a></li>
-<li><a href="#/slide-orgheadline44">Title of slide</a></li>
-<li><a href="#/slide-orgheadline45">Slide with code</a></li>
-<li><a href="#/slide-orgheadline49">A slide with subslides</a></li>
-<li><a href="#/slide-orgheadline50">A slide with an image</a></li>
-<li><a href="#/slide-orgheadline51">A slide with a table</a></li>
+<li><a href="#/slide-orgheadline17">Unit testing of front-end components</a></li>
+<li><a href="#/slide-orgheadline31">End-to-end testing</a></li>
+<li><a href="#/slide-orgheadline35">Results</a></li>
+<li><a href="#/slide-orgheadline36">Future work</a></li>
+<li><a href="#/slide-orgheadline37">References</a></li>
 </ul>
 </div>
 </div>
@@ -177,8 +161,8 @@ We don't test the backend at all because we rely on MRS's tests.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline10">
-<h2 id="orgheadline10">Unit testing of front-end components</h2>
+<section id="slide-orgheadline17">
+<h2 id="orgheadline17">Unit testing of front-end components</h2>
 <ul>
 <li><a href="http://jasmine.github.io/">Jasmine</a>: BDD-style JavaScript testing library</li>
 <li><a href="https://karma-runner.github.io/">Karma</a>: JavaScript test runner</li>
@@ -186,10 +170,8 @@ We don't test the backend at all because we rely on MRS's tests.
 </ul>
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline15">
-<h2 id="orgheadline15">Jasmine</h2>
+<section id="slide-orgheadline13">
+<h3 id="orgheadline13">Jasmine</h3>
 
 <div class="figure">
 <p><img src="./images/jasmine-logo.png" alt="jasmine-logo.png" height="200px" />
@@ -211,12 +193,8 @@ It provides functionality for:
 </ul>
 
 </section>
-<section id="slide-orgheadline14">
-<h3 id="orgheadline14">Jasmine example</h3>
-<div class="outline-text-3" id="text-orgheadline14">
-</div></section>
-<section id="slide-orgheadline11">
-<h4 id="orgheadline11">Top-level configuration</h4>
+<section id="slide-orgheadline10">
+<h4 id="orgheadline10">Jasmine example: Top-level configuration</h4>
 <div class="org-src-container">
 
 <pre><code class="javascript">// Sources/Client.Web.UI.tests/unittests/DateTimeEditor-tests.js
@@ -231,8 +209,8 @@ describe('DateTimeEditor directive', function() {
 </div>
 
 </section>
-<section id="slide-orgheadline12">
-<h4 id="orgheadline12">Set up environment before each test</h4>
+<section id="slide-orgheadline11">
+<h4 id="orgheadline11">Jasmine example: Set up environment before each test</h4>
 <div class="org-src-container">
 
 <pre><code class="javascript">beforeEach(inject(
@@ -251,8 +229,8 @@ describe('DateTimeEditor directive', function() {
 </div>
 
 </section>
-<section id="slide-orgheadline13">
-<h4 id="orgheadline13">An individual test</h4>
+<section id="slide-orgheadline12">
+<h4 id="orgheadline12">Jasmine example: An individual test</h4>
 <div class="org-src-container">
 
 <pre><code class="javascript">it('sets the fields to empty on null dates', function() {
@@ -268,10 +246,8 @@ describe('DateTimeEditor directive', function() {
 </div>
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline19">
-<h2 id="orgheadline19">Karma</h2>
+<section id="slide-orgheadline16">
+<h3 id="orgheadline16">Karma</h3>
 
 <div class="figure">
 <p><img src="./images/karma-logo.png" alt="karma-logo.png" height="200px" />
@@ -297,12 +273,8 @@ Executes tests <i>in a browser</i>.
 </p>
 
 </section>
-<section id="slide-orgheadline18">
-<h3 id="orgheadline18">Karma example</h3>
-<div class="outline-text-3" id="text-orgheadline18">
-</div></section>
-<section id="slide-orgheadline16">
-<h4 id="orgheadline16">Karma configuration file</h4>
+<section id="slide-orgheadline14">
+<h4 id="orgheadline14">Karma example: Configuration file</h4>
 <div class="org-src-container">
 
 <pre><code class="javascript">// Source/Client.Web.UI.tests/karma.conf.js
@@ -333,8 +305,8 @@ module.exports = function(config) {
 </div>
 
 </section>
-<section id="slide-orgheadline17">
-<h4 id="orgheadline17">Executing karma</h4>
+<section id="slide-orgheadline15">
+<h4 id="orgheadline15">Karma example: Executing karma</h4>
 <div class="org-src-container">
 
 <pre><code class="bash">$ karma start karma.conf.js
@@ -355,8 +327,8 @@ It also monitors files for changes, re-executing tests as needed.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline20">
-<h2 id="orgheadline20">End-to-end testing</h2>
+<section id="slide-orgheadline31">
+<h2 id="orgheadline31">End-to-end testing</h2>
 <ul>
 <li><a href="http://www.seleniumhq.org/">Selenium WebDriver</a></li>
 <li><a href="http://www.protractortest.org/#/">Protractor</a></li>
@@ -366,10 +338,8 @@ It also monitors files for changes, re-executing tests as needed.
 </ul>
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline21">
-<h2 id="orgheadline21">Selenium WebDriver</h2>
+<section id="slide-orgheadline18">
+<h3 id="orgheadline18">Selenium WebDriver</h3>
 
 <div class="figure">
 <p><img src="./images/selenium-logo.png" alt="selenium-logo.png" height="200px" />
@@ -398,10 +368,8 @@ Just leave this running all the time.
 </p>
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline29">
-<h2 id="orgheadline29">Protractor</h2>
+<section id="slide-orgheadline25">
+<h3 id="orgheadline25">Protractor</h3>
 
 <div class="figure">
 <p><img src="./images/protractor-logo.png" alt="protractor-logo.png" height="200px" />
@@ -417,12 +385,8 @@ Takes care of many of the details associated with Angular.
 </p>
 
 </section>
-<section id="slide-orgheadline28">
-<h3 id="orgheadline28">Protractor example</h3>
-<div class="outline-text-3" id="text-orgheadline28">
-</div></section>
-<section id="slide-orgheadline22">
-<h4 id="orgheadline22">Configuration: Selenium and browser</h4>
+<section id="slide-orgheadline19">
+<h4 id="orgheadline19">Protractor example: Selenium and browser configuration</h4>
 <div class="org-src-container">
 
 <pre><code class="javascript">exports.config = {
@@ -443,8 +407,8 @@ Takes care of many of the details associated with Angular.
 </div>
 
 </section>
-<section id="slide-orgheadline23">
-<h4 id="orgheadline23">Configuration: Parameters and preparation</h4>
+<section id="slide-orgheadline20">
+<h4 id="orgheadline20">Protractor example: Parameters and preparation configuration</h4>
 <div class="org-src-container">
 
 <pre><code class="language">allScriptsTimeout: 31000,
@@ -463,8 +427,8 @@ rootElement: '[ng-app]',
 </div>
 
 </section>
-<section id="slide-orgheadline24">
-<h4 id="orgheadline24">Configuration: Cucumber</h4>
+<section id="slide-orgheadline21">
+<h4 id="orgheadline21">Protractor example: Cucumber configuration</h4>
 <div class="org-src-container">
 
 <pre><code class="javascript">framework: 'custom',
@@ -490,8 +454,8 @@ cucumberOpts: {
 </div>
 
 </section>
-<section id="slide-orgheadline25">
-<h4 id="orgheadline25">Page objects</h4>
+<section id="slide-orgheadline22">
+<h4 id="orgheadline22">Protractor example: Page objects</h4>
 <div class="org-src-container">
 
 <pre><code class="javascript">function EpifyseMetafyseDialog() {
@@ -512,8 +476,8 @@ module.exports = EpifyseMetafyseDialog;
 </div>
 
 </section>
-<section id="slide-orgheadline26">
-<h4 id="orgheadline26">Test steps</h4>
+<section id="slide-orgheadline23">
+<h4 id="orgheadline23">Protractor example: Test steps</h4>
 <div class="org-src-container">
 
 <pre><code class="javascript">this.When('I select "$choice" for epifyse/metafyse', function (choice) {
@@ -531,8 +495,8 @@ module.exports = EpifyseMetafyseDialog;
 </div>
 
 </section>
-<section id="slide-orgheadline27">
-<h4 id="orgheadline27">Assertions</h4>
+<section id="slide-orgheadline24">
+<h4 id="orgheadline24">Protractor example: Assertions</h4>
 <div class="org-src-container">
 
 <pre><code class="javascript">this.Then("AO Code is \"$code\"", function (expected, next) {
@@ -546,10 +510,8 @@ module.exports = EpifyseMetafyseDialog;
 </div>
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline30">
-<h2 id="orgheadline30">PhantomJS</h2>
+<section id="slide-orgheadline26">
+<h3 id="orgheadline26">PhantomJS</h3>
 
 <div class="figure">
 <p><img src="./images/phantomjs-logo.png" alt="phantomjs-logo.png" height="200px" />
@@ -569,10 +531,8 @@ Also good for CI using headless machines.
 </p>
 
 </section>
-</section>
-<section>
-<section id="slide-orgheadline35">
-<h2 id="orgheadline35">Cucumber</h2>
+<section id="slide-orgheadline30">
+<h3 id="orgheadline30">Cucumber</h3>
 
 <div class="figure">
 <p><img src="./images/cucumber-logo.png" alt="cucumber-logo.png" height="200px" />
@@ -592,12 +552,8 @@ Tests are tied via regular expressions to executable code.
 </p>
 
 </section>
-<section id="slide-orgheadline34">
-<h3 id="orgheadline34">Cucumber example</h3>
-<div class="outline-text-3" id="text-orgheadline34">
-</div></section>
-<section id="slide-orgheadline31">
-<h4 id="orgheadline31">Feature files</h4>
+<section id="slide-orgheadline27">
+<h4 id="orgheadline27">Cucumber example: Feature files</h4>
 <div class="org-src-container">
 
 <pre><code class="gherkin">Feature: Incident form rules
@@ -615,8 +571,8 @@ Tests are tied via regular expressions to executable code.
 </div>
 
 </section>
-<section id="slide-orgheadline32">
-<h4 id="orgheadline32">Mapping gherkin to javascript</h4>
+<section id="slide-orgheadline28">
+<h4 id="orgheadline28">Cucumber example: Mapping gherkin to javascript</h4>
 <div class="org-src-container">
 
 <pre><code class="javascript">this.When(/^I create a new incident$/, function(next) {
@@ -633,8 +589,8 @@ Tests are tied via regular expressions to executable code.
 </div>
 
 </section>
-<section id="slide-orgheadline33">
-<h4 id="orgheadline33">Passing parameters to steps</h4>
+<section id="slide-orgheadline29">
+<h4 id="orgheadline29">Cucumber example: Passing parameters to steps</h4>
 <div class="org-src-container">
 
 <pre><code class="javascript">this.When("I select skadested \"$code\"", function(code, next) {
@@ -650,169 +606,102 @@ Tests are tied via regular expressions to executable code.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline36">
-<h2 id="orgheadline36">NOTES</h2>
+<section id="slide-orgheadline35">
+<h2 id="orgheadline35">Results</h2>
+<div class="outline-text-2" id="text-orgheadline35">
+</div></section>
+<section id="slide-orgheadline32">
+<h3 id="orgheadline32">How much effort is involved?</h3>
 <p>
-<a href="https://docs.angularjs.org/guide/unit-testing">https://docs.angularjs.org/guide/unit-testing</a>
+The main effort was learning the testing ecosystem.
 </p>
+
+<p>
+Writing tests <b>can</b> be time consuming.
+</p>
+
+<p>
+It has been a small fraction of overall development effort.
+</p>
+
+</section>
+<section id="slide-orgheadline33">
+<h3 id="orgheadline33">Is it worth the effort?</h3>
+<p>
+<b>YES!</b>
+</p>
+
+<p>
+These tests have paid for themselves several times over.
+</p>
+
+<p>
+I can make large changes to the registry with confidence.
+</p>
+
+</section>
+<section id="slide-orgheadline34">
+<h3 id="orgheadline34">How about the use of cucumber?</h3>
+<p>
+This was a mixed result.
+</p>
+
+<p>
+Domain experts are not involved in writing these tests as envisioned.
+</p>
+
+<p>
+The extra level of abstraction does entail extra work and maintenance.
+</p>
+
+<p>
+However, the constraints have led to well-structured, reusable tests.
+</p>
+
+<p>
+<b>On balance, I think the approach is effective. And it may prove even more
+useful in future maintenance.</b>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline36">
+<h2 id="orgheadline36">Future work</h2>
+<ul>
+<li>Integrate testing with continuous integration</li>
+<li>Find ways to speed up tests</li>
+<li>Polish and improve existing tests</li>
+
+</ul>
 
 </section>
 </section>
 <section>
 <section id="slide-orgheadline37">
-<h2 id="orgheadline37">What?</h2>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline38">
-<h2 id="orgheadline38">Why?</h2>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline39">
-<h2 id="orgheadline39">Protractor</h2>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline40">
-<h2 id="orgheadline40">Cucumber</h2>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline41">
-<h2 id="orgheadline41">Karma</h2>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline42">
-<h2 id="orgheadline42">Chai</h2>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline43">
-<h2 id="orgheadline43">Results</h2>
-
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline44">
-<h2 id="orgheadline44">Title of slide</h2>
+<h2 id="orgheadline37">References</h2>
 <p>
-Text
+<b>Technology</b>
 </p>
-</section>
-</section>
-<section>
-<section id="slide-orgheadline45">
-<h2 id="orgheadline45">Slide with code</h2>
-<p>
-Here is a code sample
-</p>
+<ul>
+<li>Karma:   <a href="https://karma-runner.github.io/">karma-runner.github.io</a></li>
+<li>Jasmine: <a href="https://jasmine.github.io/">jasmine.github.io</a></li>
+<li>Selenium:  <a href="https://www.seleniumhq.org/">seleniumhq.org</a></li>
+<li>Protractor: <a href="https://www.protractortest.org/">protractortest.org</a></li>
+<li>PhantomJS: <a href="https://phantomjs.org/">phantomjs.org</a></li>
+<li>Cucumber: <a href="https://cucumber.io/">cucumber.io</a></li>
 
-
-<div class="org-src-container">
-
-<pre><code class="javascript">var mod = angular.module('llamas');
-mod.factory( . . . );
-</code></pre>
-</div>
-
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline49">
-<h2 id="orgheadline49">A slide with subslides</h2>
-<div class="outline-text-2" id="text-orgheadline49">
-</div></section>
-<section id="slide-orgheadline46">
-<h3 id="orgheadline46">Bullet 1</h3>
-<p>
-Useful info
-</p>
-
-
-</section>
-<section id="slide-orgheadline47">
-<h3 id="orgheadline47">Bullet 2</h3>
-<p>
-More useful info
-</p>
-
-</section>
-<section id="slide-orgheadline48">
-<h3 id="orgheadline48">Etc.</h3>
-<p>
-Such useful information that you'll question your need to ever learn anything else ever again
-</p>
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline50">
-<h2 id="orgheadline50">A slide with an image</h2>
-
-<div class="figure">
-<p><img src="./images/myimage.png" alt="myimage.png" />
-</p>
-</div>
-
-
-<div class="figure">
-<p><img src="./images/myimage.png" alt="myimage.png" height="200%," width="200%" />
-</p>
-</div>
-
-</section>
-</section>
-<section>
-<section id="slide-orgheadline51">
-<h2 id="orgheadline51">A slide with a table</h2>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" width="100%">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">column<sub>title1</sub></th>
-<th scope="col" class="org-left">column<sub>title2</sub></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">a</td>
-<td class="org-left">b</td>
-</tr>
-
-<tr>
-<td class="org-left">a</td>
-<td class="org-left">b</td>
-</tr>
-
-<tr>
-<td class="org-left">a</td>
-<td class="org-left">b</td>
-</tr>
-</tbody>
-</table>
+</ul>
 
 <p>
-And you can style the table like this:
+<b>Other interesting links</b>
 </p>
+<ul>
+<li>Unit testing for Angular: <a href="https://docs.angularjs.org/guide/unit-testing">docs.angularjs.org/guide/unit-testing</a></li>
+<li>The important of testability: <a href="https://speakerdeck.com/abingham/the-primacy-of-testability">speakerdeck.com/abingham/the-primacy-of-testability</a></li>
+<li>This presentation: <a href="https://github.com/abingham/fracture-registry-testing-presentation">github.com/abingham/fracture-registry-testing-presentation</a></li>
 
-<div class="org-src-container">
-
-<pre><code class="css">.reveal table th, .reveal table td {
-    text-align: center;
-    border: 1px solid white;
-}
-</code></pre>
-</div>
+</ul>
 </section>
 </section>
 </div>

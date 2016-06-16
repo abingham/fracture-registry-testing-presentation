@@ -80,7 +80,7 @@ We don't test the backend at all because we rely on MRS's tests.
 - [[http://jasmine.github.io/][Jasmine]]: BDD-style JavaScript testing library
 - [[https://karma-runner.github.io/][Karma]]: JavaScript test runner
 
-* Jasmine
+** Jasmine
 
 #+ATTR_HTML: :height 200px
 [[./images/jasmine-logo.png]]
@@ -92,8 +92,7 @@ It provides functionality for:
 - Defining fixtures
 - Expressing assertions
 
-** Jasmine example
-*** Top-level configuration
+*** Jasmine example: Top-level configuration
 
 #+BEGIN_SRC javascript
 // Sources/Client.Web.UI.tests/unittests/DateTimeEditor-tests.js
@@ -107,7 +106,7 @@ describe('DateTimeEditor directive', function() {
 
 #+END_SRC
 
-*** Set up environment before each test
+*** Jasmine example: Set up environment before each test
 
 
 #+BEGIN_SRC javascript
@@ -125,7 +124,7 @@ beforeEach(inject(
 ));
 #+END_SRC
 
-*** An individual test
+*** Jasmine example: An individual test
 
 
 #+BEGIN_SRC javascript
@@ -140,7 +139,7 @@ it('sets the fields to empty on null dates', function() {
 });
 #+END_SRC
 
-* Karma
+** Karma
 
 #+ATTR_HTML: :height 200px
 [[./images/karma-logo.png]]
@@ -154,8 +153,7 @@ You specify:
 
 Executes tests /in a browser/.
 
-** Karma example
-*** Karma configuration file
+*** Karma example: Configuration file
 
 #+BEGIN_SRC javascript
 // Source/Client.Web.UI.tests/karma.conf.js
@@ -185,7 +183,7 @@ module.exports = function(config) {
 
 #+END_SRC
 
-*** Executing karma
+*** Karma example: Executing karma
 
 
 #+BEGIN_SRC bash
@@ -205,7 +203,7 @@ It also monitors files for changes, re-executing tests as needed.
 - [[http://phantomjs.org/][PhantomJS]]
 - [[https://cucumber.io/][Cucumber]]
 
-* Selenium WebDriver
+** Selenium WebDriver
 
 #+ATTR_HTML: :height 200px
 [[./images/selenium-logo.png]]
@@ -222,7 +220,7 @@ C:\Users\mrsdev> webdriver-manager start
 
 Just leave this running all the time.
 
-* Protractor
+** Protractor
 
 #+ATTR_HTML: :height 200px
 [[./images/protractor-logo.png]]
@@ -231,8 +229,7 @@ An end-to-end- test framework for AngularJS apps.
 
 Takes care of many of the details associated with Angular.
 
-** Protractor example
-*** Configuration: Selenium and browser
+*** Protractor example: Selenium and browser configuration
 
 #+BEGIN_SRC javascript
 exports.config = {
@@ -251,7 +248,7 @@ exports.config = {
     . . .
 #+END_SRC
 
-*** Configuration: Parameters and preparation
+*** Protractor example: Parameters and preparation configuration
 
 #+BEGIN_SRC language
 allScriptsTimeout: 31000,
@@ -268,7 +265,7 @@ onPrepare: function() {
 rootElement: '[ng-app]',
 #+END_SRC
 
-*** Configuration: Cucumber
+*** Protractor example: Cucumber configuration
 
 #+BEGIN_SRC javascript
 framework: 'custom',
@@ -292,7 +289,7 @@ cucumberOpts: {
 }
 #+END_SRC
 
-*** Page objects
+*** Protractor example: Page objects
 
 #+BEGIN_SRC javascript
 function EpifyseMetafyseDialog() {
@@ -311,7 +308,7 @@ EpifyseMetafyseDialog.prototype = Object.create({}, {
 module.exports = EpifyseMetafyseDialog;
 #+END_SRC
 
-*** Test steps
+*** Protractor example: Test steps
 
 #+BEGIN_SRC javascript
 this.When('I select "$choice" for epifyse/metafyse', function (choice) {
@@ -327,7 +324,7 @@ this.When('I select "$choice" for epifyse/metafyse', function (choice) {
 });
 #+END_SRC
 
-*** Assertions
+*** Protractor example: Assertions
 
 #+BEGIN_SRC javascript
 this.Then("AO Code is \"$code\"", function (expected, next) {
@@ -339,7 +336,7 @@ this.Then("AO Code is \"$code\"", function (expected, next) {
 });
 #+END_SRC
 
-* PhantomJS
+** PhantomJS
 
 #+ATTR_HTML: :height 200px
 [[./images/phantomjs-logo.png]]
@@ -350,7 +347,7 @@ Good for running E2E tests in the background.
 
 Also good for CI using headless machines.
 
-* Cucumber
+** Cucumber
 
 #+ATTR_HTML: :height 200px
 [[./images/cucumber-logo.png]]
@@ -361,8 +358,8 @@ Allow non-programmer domain experts to write tests. In principle...
 
 Tests are tied via regular expressions to executable code.
 
-** Cucumber example
-*** Feature files
+*** Cucumber example: Feature files
+
 
 #+BEGIN_SRC gherkin
 Feature: Incident form rules
@@ -378,7 +375,7 @@ Feature: Incident form rules
     And the N fremkomstmiddel options are not displayed
 #+END_SRC
 
-*** Mapping gherkin to javascript
+*** Cucumber example: Mapping gherkin to javascript
 
 
 #+BEGIN_SRC javascript
@@ -394,7 +391,7 @@ this.When(/^I create a new incident$/, function(next) {
 });
 #+END_SRC
 
-*** Passing parameters to steps
+*** Cucumber example: Passing parameters to steps
 
 #+BEGIN_SRC javascript
 this.When("I select skadested \"$code\"", function(code, next) {
@@ -445,15 +442,15 @@ useful in future maintenance.*
 
 * References
 
-Technology
-- Karma: [[karma-runner.github.io]]
-- Jasmine: [[jasmine.github.io]]
-- Selenium:  [[www.seleniumhq.org]]
-- Protractor: [[www.protractortest.org/]]
-- PhantomJS: [[phantomjs.org/]]
-- Cucumber: [[cucumber.io/]]
+*Technology*
+- Karma:   [[https://karma-runner.github.io][karma-runner.github.io]]
+- Jasmine: [[https://jasmine.github.io][jasmine.github.io]]
+- Selenium:  [[https://www.seleniumhq.org][seleniumhq.org]]
+- Protractor: [[https://www.protractortest.org/][protractortest.org]]
+- PhantomJS: [[https://phantomjs.org/][phantomjs.org]]
+- Cucumber: [[https://cucumber.io/][cucumber.io]]
 
-Other interesting links:
-- Unit testing for Angular: [[docs.angularjs.org/guide/unit-testing]]
-- The important of testability: [[speakerdeck.com/abingham/the-primacy-of-testability]]
-- This presentation: [[github.com/abingham/fracture-registry-testing-presentation]]
+*Other interesting links*
+- Unit testing for Angular: [[https://docs.angularjs.org/guide/unit-testing][docs.angularjs.org/guide/unit-testing]]
+- The important of testability: [[https://speakerdeck.com/abingham/the-primacy-of-testability][speakerdeck.com/abingham/the-primacy-of-testability]]
+- This presentation: [[https://github.com/abingham/fracture-registry-testing-presentation][github.com/abingham/fracture-registry-testing-presentation]]
