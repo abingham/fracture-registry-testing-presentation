@@ -44,20 +44,22 @@
 <li><a href="#/slide-orgheadline19">Karma</a></li>
 <li><a href="#/slide-orgheadline20">End-to-end testing</a></li>
 <li><a href="#/slide-orgheadline21">Selenium WebDriver</a></li>
-<li><a href="#/slide-orgheadline22">Protractor</a></li>
-<li><a href="#/slide-orgheadline23">NOTES</a></li>
-<li><a href="#/slide-orgheadline24">What?</a></li>
-<li><a href="#/slide-orgheadline25">Why?</a></li>
-<li><a href="#/slide-orgheadline26">Protractor</a></li>
-<li><a href="#/slide-orgheadline27">Cucumber</a></li>
-<li><a href="#/slide-orgheadline28">Karma</a></li>
-<li><a href="#/slide-orgheadline29">Chai</a></li>
-<li><a href="#/slide-orgheadline30">Results</a></li>
-<li><a href="#/slide-orgheadline31">Title of slide</a></li>
-<li><a href="#/slide-orgheadline32">Slide with code</a></li>
-<li><a href="#/slide-orgheadline36">A slide with subslides</a></li>
-<li><a href="#/slide-orgheadline37">A slide with an image</a></li>
-<li><a href="#/slide-orgheadline38">A slide with a table</a></li>
+<li><a href="#/slide-orgheadline29">Protractor</a></li>
+<li><a href="#/slide-orgheadline30">PhantomJS</a></li>
+<li><a href="#/slide-orgheadline35">Cucumber</a></li>
+<li><a href="#/slide-orgheadline36">NOTES</a></li>
+<li><a href="#/slide-orgheadline37">What?</a></li>
+<li><a href="#/slide-orgheadline38">Why?</a></li>
+<li><a href="#/slide-orgheadline39">Protractor</a></li>
+<li><a href="#/slide-orgheadline40">Cucumber</a></li>
+<li><a href="#/slide-orgheadline41">Karma</a></li>
+<li><a href="#/slide-orgheadline42">Chai</a></li>
+<li><a href="#/slide-orgheadline43">Results</a></li>
+<li><a href="#/slide-orgheadline44">Title of slide</a></li>
+<li><a href="#/slide-orgheadline45">Slide with code</a></li>
+<li><a href="#/slide-orgheadline49">A slide with subslides</a></li>
+<li><a href="#/slide-orgheadline50">A slide with an image</a></li>
+<li><a href="#/slide-orgheadline51">A slide with a table</a></li>
 </ul>
 </div>
 </div>
@@ -118,7 +120,7 @@ Tests execute the site just like a user and verify that it responds as expected.
 </p>
 
 <p>
-<i>Example:</i> Test that users have to assign Gustil-Anderson rating to all fractures.
+<i>Example:</i> Test that users have to assign Gustilo-Anderson rating to all fractures.
 </p>
 
 </section>
@@ -188,8 +190,14 @@ We don't test the backend at all because we rely on MRS's tests.
 <section>
 <section id="slide-orgheadline15">
 <h2 id="orgheadline15">Jasmine</h2>
+
+<div class="figure">
+<p><img src="./images/jasmine-logo.png" alt="jasmine-logo.png" height="200px" />
+</p>
+</div>
+
 <p>
-Jasmine attempts to align natural language descriptions of tests with JavaScript that defines the test.
+A behavior-driven development framework for JavaScript.
 </p>
 
 <p>
@@ -264,6 +272,12 @@ describe('DateTimeEditor directive', function() {
 <section>
 <section id="slide-orgheadline19">
 <h2 id="orgheadline19">Karma</h2>
+
+<div class="figure">
+<p><img src="./images/karma-logo.png" alt="karma-logo.png" height="200px" />
+</p>
+</div>
+
 <p>
 Created by AngularJS team to meet their testing needs.
 </p>
@@ -346,6 +360,7 @@ It also monitors files for changes, re-executing tests as needed.
 <ul>
 <li><a href="http://www.seleniumhq.org/">Selenium WebDriver</a></li>
 <li><a href="http://www.protractortest.org/#/">Protractor</a></li>
+<li><a href="http://phantomjs.org/">PhantomJS</a></li>
 <li><a href="https://cucumber.io/">Cucumber</a></li>
 
 </ul>
@@ -357,7 +372,7 @@ It also monitors files for changes, re-executing tests as needed.
 <h2 id="orgheadline21">Selenium WebDriver</h2>
 
 <div class="figure">
-<p><img src="./images/selenium-logo.png" alt="selenium-logo.png" />
+<p><img src="./images/selenium-logo.png" alt="selenium-logo.png" height="200px" />
 </p>
 </div>
 
@@ -372,7 +387,6 @@ WebDriver allows you to automate browsers.
 
 </ol>
 
-
 <div class="org-src-container">
 
 <pre><code class="bash">C:\Users\mrsdev> webdriver-manager start
@@ -386,8 +400,14 @@ Just leave this running all the time.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline22">
-<h2 id="orgheadline22">Protractor</h2>
+<section id="slide-orgheadline29">
+<h2 id="orgheadline29">Protractor</h2>
+
+<div class="figure">
+<p><img src="./images/protractor-logo.png" alt="protractor-logo.png" height="200px" />
+</p>
+</div>
+
 <p>
 An end-to-end- test framework for AngularJS apps.
 </p>
@@ -396,13 +416,242 @@ An end-to-end- test framework for AngularJS apps.
 Takes care of many of the details associated with Angular.
 </p>
 
+</section>
+<section id="slide-orgheadline28">
+<h3 id="orgheadline28">Protractor example</h3>
+<div class="outline-text-3" id="text-orgheadline28">
+</div></section>
+<section id="slide-orgheadline22">
+<h4 id="orgheadline22">Configuration: Selenium and browser</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">exports.config = {
+    seleniumAddress:
+    (process.env.SELENIUM_URL || 'http://localhost:4444/wd/hub'),
+
+    capabilities: {
+        'browserName':
+        (process.env.TEST_BROWSER_NAME || 'phantomjs'),
+        'version':
+        (process.env.TEST_BROWSER_VERSION || 'ANY'),
+        'phantomjs.binary.path':
+        (process.env.PHANTOMJS_BINARY_PATH || require('phantomjs-prebuilt').path)
+    },
+
+    . . .
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline23">
+<h4 id="orgheadline23">Configuration: Parameters and preparation</h4>
+<div class="org-src-container">
+
+<pre><code class="language">allScriptsTimeout: 31000,
+getPageTimeout: 30000,
+
+// This can be controlled with the '--baseUrl' arguments to protractor as well.
+baseUrl: 'https://mrsdev.helsemn.no/Frakturregister/',
+
+onPrepare: function() {
+    browser.manage().window().setSize(1600, 1000);
+    // TODO: Should we do login/patient selection here?
+},
+
+rootElement: '[ng-app]',
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline24">
+<h4 id="orgheadline24">Configuration: Cucumber</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">framework: 'custom',
+
+frameworkPath: require.resolve('protractor-cucumber-framework'),
+
+// Spec patterns are relative to this directory.
+specs: [
+    'tests/*.feature'
+],
+
+cucumberOpts: {
+    require: ['tests/config.js',
+              'tests/stepDefinitions/mrs_common_steps.js',
+              'tests/stepDefinitions/consultation_form_steps.js',
+              'tests/stepDefinitions/fracture_form_steps.js',
+              'tests/stepDefinitions/incident_form_steps.js',
+              'tests/stepDefinitions/procedure_form_steps.js'],
+    // tags: ['@dev'],
+    format: 'pretty'
+}
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline25">
+<h4 id="orgheadline25">Page objects</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">function EpifyseMetafyseDialog() {
+    this.dialog = element(by.name('epifyse-metafyse-dialog'));
+};
+
+EpifyseMetafyseDialog.prototype = Object.create({}, {
+    epifyseButton: { get: function() {
+        return this.dialog.element(by.buttonText('Epifyse'));
+    }},
+    metafyseButton: { get: function() {
+        return this.dialog.element(by.buttonText('Metafyse'));
+    }}
+});
+
+module.exports = EpifyseMetafyseDialog;
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline26">
+<h4 id="orgheadline26">Test steps</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">this.When('I select "$choice" for epifyse/metafyse', function (choice) {
+    var dialog = new EpifyseMetafyseDialog();
+    switch (choice.toLowerCase()) {
+    case 'metafyse':
+        return dialog.metafyseButton.click();
+    case 'epifyse':
+        return dialog.epifyseButton.click();
+    default:
+        throw 'epifyse-metafyse choice must be epifyse or metafyse';
+    }
+});
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline27">
+<h4 id="orgheadline27">Assertions</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">this.Then("AO Code is \"$code\"", function (expected, next) {
+    var page = new FracturePage();
+    page.aoCode.get().then(function (ao) {
+        expect(ao).to.equal(expected);
+        next();
+    });
+});
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline30">
+<h2 id="orgheadline30">PhantomJS</h2>
+
+<div class="figure">
+<p><img src="./images/phantomjs-logo.png" alt="phantomjs-logo.png" height="200px" />
+</p>
+</div>
+
+<p>
+A headless, WebKit-based browser.
+</p>
+
+<p>
+Good for running E2E tests in the background.
+</p>
+
+<p>
+Also good for CI using headless machines.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline35">
+<h2 id="orgheadline35">Cucumber</h2>
+
+<div class="figure">
+<p><img src="./images/cucumber-logo.png" alt="cucumber-logo.png" height="200px" />
+</p>
+</div>
+
+<p>
+"Natural language" test definitions using <a href="https://cucumber.io/docs/reference">gherkin syntax</a>.
+</p>
+
+<p>
+Allow non-programmer domain experts to write tests. In principle&#x2026;
+</p>
+
+<p>
+Tests are tied via regular expressions to executable code.
+</p>
+
+</section>
+<section id="slide-orgheadline34">
+<h3 id="orgheadline34">Cucumber example</h3>
+<div class="outline-text-3" id="text-orgheadline34">
+</div></section>
+<section id="slide-orgheadline31">
+<h4 id="orgheadline31">Feature files</h4>
+<div class="org-src-container">
+
+<pre><code class="gherkin">Feature: Incident form rules
+  The incident form should enforce certain rules and constraints
+  so that it doesn't generate invalid incidents.
+
+  Background:
+    Given I create a new incident
+
+  Scenario: Showing skadested V1 suboptions
+    When I select skadested "V1"
+    Then the V1 fremkomstmiddel options are displayed
+    And the N fremkomstmiddel options are not displayed
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline32">
+<h4 id="orgheadline32">Mapping gherkin to javascript</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">this.When(/^I create a new incident$/, function(next) {
+    var that = this;
+    var page = new IncidentPage();
+    page.create(this.patientGuid).then(function () {
+        return page.formId;
+    }).then(function(guid) {
+        that.incidentFormGuid = guid;
+        next();
+    });
+});
+</code></pre>
+</div>
+
+</section>
+<section id="slide-orgheadline33">
+<h4 id="orgheadline33">Passing parameters to steps</h4>
+<div class="org-src-container">
+
+<pre><code class="javascript">this.When("I select skadested \"$code\"", function(code, next) {
+    var page  = new IncidentPage();
+    page.skadested.set(code).then(function() {
+        next();
+    });
+});
+</code></pre>
+</div>
 
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline23">
-<h2 id="orgheadline23">NOTES</h2>
+<section id="slide-orgheadline36">
+<h2 id="orgheadline36">NOTES</h2>
 <p>
 <a href="https://docs.angularjs.org/guide/unit-testing">https://docs.angularjs.org/guide/unit-testing</a>
 </p>
@@ -410,53 +659,53 @@ Takes care of many of the details associated with Angular.
 </section>
 </section>
 <section>
-<section id="slide-orgheadline24">
-<h2 id="orgheadline24">What?</h2>
+<section id="slide-orgheadline37">
+<h2 id="orgheadline37">What?</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline25">
-<h2 id="orgheadline25">Why?</h2>
+<section id="slide-orgheadline38">
+<h2 id="orgheadline38">Why?</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline26">
-<h2 id="orgheadline26">Protractor</h2>
+<section id="slide-orgheadline39">
+<h2 id="orgheadline39">Protractor</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline27">
-<h2 id="orgheadline27">Cucumber</h2>
+<section id="slide-orgheadline40">
+<h2 id="orgheadline40">Cucumber</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline28">
-<h2 id="orgheadline28">Karma</h2>
+<section id="slide-orgheadline41">
+<h2 id="orgheadline41">Karma</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline29">
-<h2 id="orgheadline29">Chai</h2>
+<section id="slide-orgheadline42">
+<h2 id="orgheadline42">Chai</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline30">
-<h2 id="orgheadline30">Results</h2>
+<section id="slide-orgheadline43">
+<h2 id="orgheadline43">Results</h2>
 
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline31">
-<h2 id="orgheadline31">Title of slide</h2>
+<section id="slide-orgheadline44">
+<h2 id="orgheadline44">Title of slide</h2>
 <p>
 Text
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline32">
-<h2 id="orgheadline32">Slide with code</h2>
+<section id="slide-orgheadline45">
+<h2 id="orgheadline45">Slide with code</h2>
 <p>
 Here is a code sample
 </p>
@@ -473,27 +722,27 @@ mod.factory( . . . );
 </section>
 </section>
 <section>
-<section id="slide-orgheadline36">
-<h2 id="orgheadline36">A slide with subslides</h2>
-<div class="outline-text-2" id="text-orgheadline36">
+<section id="slide-orgheadline49">
+<h2 id="orgheadline49">A slide with subslides</h2>
+<div class="outline-text-2" id="text-orgheadline49">
 </div></section>
-<section id="slide-orgheadline33">
-<h3 id="orgheadline33">Bullet 1</h3>
+<section id="slide-orgheadline46">
+<h3 id="orgheadline46">Bullet 1</h3>
 <p>
 Useful info
 </p>
 
 
 </section>
-<section id="slide-orgheadline34">
-<h3 id="orgheadline34">Bullet 2</h3>
+<section id="slide-orgheadline47">
+<h3 id="orgheadline47">Bullet 2</h3>
 <p>
 More useful info
 </p>
 
 </section>
-<section id="slide-orgheadline35">
-<h3 id="orgheadline35">Etc.</h3>
+<section id="slide-orgheadline48">
+<h3 id="orgheadline48">Etc.</h3>
 <p>
 Such useful information that you'll question your need to ever learn anything else ever again
 </p>
@@ -501,8 +750,8 @@ Such useful information that you'll question your need to ever learn anything el
 </section>
 </section>
 <section>
-<section id="slide-orgheadline37">
-<h2 id="orgheadline37">A slide with an image</h2>
+<section id="slide-orgheadline50">
+<h2 id="orgheadline50">A slide with an image</h2>
 
 <div class="figure">
 <p><img src="./images/myimage.png" alt="myimage.png" />
@@ -518,8 +767,8 @@ Such useful information that you'll question your need to ever learn anything el
 </section>
 </section>
 <section>
-<section id="slide-orgheadline38">
-<h2 id="orgheadline38">A slide with a table</h2>
+<section id="slide-orgheadline51">
+<h2 id="orgheadline51">A slide with a table</h2>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" width="100%">
 
 

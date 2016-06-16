@@ -44,7 +44,7 @@ Tests isolate and exercise details of the overall implementation.
 
 Tests execute the site just like a user and verify that it responds as expected.
 
-/Example:/ Test that users have to assign Gustil-Anderson rating to all fractures.
+/Example:/ Test that users have to assign Gustilo-Anderson rating to all fractures.
 
 ** Use-case driven tests (behavior-driven design)
 
@@ -82,9 +82,10 @@ We don't test the backend at all because we rely on MRS's tests.
 
 * Jasmine
 
+#+ATTR_HTML: :height 200px
 [[./images/jasmine-logo.png]]
 
-Jasmine attempts to align natural language descriptions of tests with JavaScript that defines the test.
+A behavior-driven development framework for JavaScript.
 
 It provides functionality for:
 - Structuring and organizing tests
@@ -141,6 +142,7 @@ it('sets the fields to empty on null dates', function() {
 
 * Karma
 
+#+ATTR_HTML: :height 200px
 [[./images/karma-logo.png]]
 
 Created by AngularJS team to meet their testing needs.
@@ -205,6 +207,7 @@ It also monitors files for changes, re-executing tests as needed.
 
 * Selenium WebDriver
 
+#+ATTR_HTML: :height 200px
 [[./images/selenium-logo.png]]
 
 WebDriver allows you to automate browsers.
@@ -221,6 +224,7 @@ Just leave this running all the time.
 
 * Protractor
 
+#+ATTR_HTML: :height 200px
 [[./images/protractor-logo.png]]
 
 An end-to-end- test framework for AngularJS apps.
@@ -336,6 +340,8 @@ this.Then("AO Code is \"$code\"", function (expected, next) {
 #+END_SRC
 
 * PhantomJS
+
+#+ATTR_HTML: :height 200px
 [[./images/phantomjs-logo.png]]
 
 A headless, WebKit-based browser.
@@ -345,6 +351,8 @@ Good for running E2E tests in the background.
 Also good for CI using headless machines.
 
 * Cucumber
+
+#+ATTR_HTML: :height 200px
 [[./images/cucumber-logo.png]]
 
 "Natural language" test definitions using [[https://cucumber.io/docs/reference][gherkin syntax]].
@@ -398,61 +406,54 @@ this.When("I select skadested \"$code\"", function(code, next) {
 #+END_SRC
 
 
-* NOTES
-https://docs.angularjs.org/guide/unit-testing
-
-* What?
-* Why?
-* Protractor
-* Cucumber
-* Karma
-* Chai
 * Results
 
+** How much effort is involved?
 
-* Title of slide
-Text
-* Slide with code
-Here is a code sample
+The main effort was learning the testing ecosystem.
 
+Writing tests *can* be time consuming.
 
-#+BEGIN_SRC javascript
-var mod = angular.module('llamas');
-mod.factory( . . . );
-#+END_SRC
+It has been a small fraction of overall development effort.
 
+** Is it worth the effort?
 
-* A slide with subslides
-** Bullet 1
+*YES!*
 
-Useful info
+These tests have paid for themselves several times over.
 
+I can make large changes to the registry with confidence.
 
-** Bullet 2
-More useful info
+** How about the use of cucumber?
 
-** Etc.
-Such useful information that you'll question your need to ever learn anything else ever again
+This was a mixed result.
 
-* A slide with an image
-[[./images/myimage.png]]
+Domain experts are not involved in writing these tests as envisioned.
 
-#+ATTR_HTML: :height 200%, :width 200%
-[[./images/myimage.png]]
+The extra level of abstraction does entail extra work and maintenance.
 
-* A slide with a table
-#+ATTR_HTML: :width 100%
-| column_title1  | column_title2 |
-|----------------+---------------|
-| a              | b             |
-| a              | b             |
-| a              | b             |
+However, the constraints have led to well-structured, reusable tests.
 
-And you can style the table like this:
+*On balance, I think the approach is effective. And it may prove even more
+useful in future maintenance.*
 
-#+BEGIN_SRC css
-.reveal table th, .reveal table td {
-    text-align: center;
-    border: 1px solid white;
-}
-#+END_SRC
+* Future work
+
+- Integrate testing with continuous integration
+- Find ways to speed up tests
+- Polish and improve existing tests
+
+* References
+
+Technology
+- Karma: [[karma-runner.github.io]]
+- Jasmine: [[jasmine.github.io]]
+- Selenium:  [[www.seleniumhq.org]]
+- Protractor: [[www.protractortest.org/]]
+- PhantomJS: [[phantomjs.org/]]
+- Cucumber: [[cucumber.io/]]
+
+Other interesting links:
+- Unit testing for Angular: [[docs.angularjs.org/guide/unit-testing]]
+- The important of testability: [[speakerdeck.com/abingham/the-primacy-of-testability]]
+- This presentation: [[github.com/abingham/fracture-registry-testing-presentation]]
